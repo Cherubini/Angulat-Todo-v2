@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Todo } from 'src/app/models/todo';
+import { DataManagerService } from 'src/app/services/data-manager.service';
 
 @Component({
   selector: 'app-todo-detail',
@@ -8,9 +9,14 @@ import { Todo } from 'src/app/models/todo';
 })
 export class TodoDetailComponent {
   @Input() todoDetail?: Todo;
-  @Output() todoDeleted: EventEmitter<Todo> = new EventEmitter();
+
+  constructor(private dataManagerServ: DataManagerService){
+
+  }
 
   deleteTodo(){
-    this.todoDeleted.emit(this.todoDetail);
+    if(this.todoDetail)
+      this.dataManagerServ.deleteTodo(this.todoDetail)
   }
+
 }
