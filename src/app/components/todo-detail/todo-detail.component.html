@@ -1,0 +1,12 @@
+<li *ngIf="todoDetail" class="priority{{todoDetail.priority}}">
+  <h3>{{todoDetail.title}}</h3>
+  <span>{{todoDetail.description}}</span>
+  <button (click)='deleteTodo()'>cancella</button>
+</li>
+
+
+<!-- completamente equivalenti
+<li *ngIf='todoDetail'>
+  <h3>{{todoDetail?.title}}</h3>
+  <span>{{todoDetail?.description}}</span>
+</li> -->
